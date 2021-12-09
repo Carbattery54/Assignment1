@@ -1,0 +1,70 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Assingnment1 {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Random random = new Random();
+        int pcPuani = 0;
+        int oyuncuPuani = 0;
+        System.out.println("Enter the number corresponding to Rock, Paper or Scissors. First to reach 5 points wins, good luck!");
+        do {
+            System.out.println("Rock = 1 " + "Paper = 2 " + "Scissors = 3 ");
+            int oyuncu = scan.nextInt();
+            String oyuncuS = "";
+            switch (oyuncu) {
+                case 1:
+                    oyuncuS = "R";
+                    break;
+                case 2:
+                    oyuncuS = "P";
+                    break;
+                case 3:
+                    oyuncuS = "S";
+            }
+            System.out.println("Your choice " + oyuncuS);
+            int bilgisayar = random.nextInt(3) + 1;
+            String CPU = "";
+            switch (bilgisayar) {
+                case 1:
+                    CPU = "R";
+                    break;
+                case 2:
+                    CPU = "P";
+                    break;
+                case 3:
+                    CPU = "S";
+            }
+            System.out.println("Computer choice " + CPU);
+            if (CPU == oyuncuS) {
+                System.out.println("Game draw." + " Nobody earn point " + "Your point " + oyuncuPuani +  " Computer's point = " + pcPuani);
+            } else if (CPU == "S" && oyuncuS == "P") {
+                pcPuani += 1;
+                System.out.println("Computer won." + " Your point " + oyuncuPuani +  " Computer's point = " + pcPuani);
+            } else if (CPU == "S" && oyuncuS == "R") {
+                oyuncuPuani += 1;
+                System.out.println("Player won." + " Your point " + oyuncuPuani +  " Computer's point = " + pcPuani);
+            } else if (CPU == "R" && oyuncuS == "P") {
+                oyuncuPuani += 1;
+                System.out.println("Player won." + " Your point " + oyuncuPuani +  " Computer's point = " + pcPuani);
+            } else if (CPU == "R" && oyuncuS == "S") {
+                pcPuani += 1;
+                System.out.println("Computer won." + " Your point " + oyuncuPuani +  " Computer's point = " + pcPuani);
+            } else if (CPU == "P" && oyuncuS == "S") {
+                oyuncuPuani += 1;
+                System.out.println("Player won." + " Your point " + oyuncuPuani +  " Computer's point = " + pcPuani);
+            } else if (CPU == "P" && oyuncuS == "R") {
+                pcPuani += 1;
+                System.out.println("Computer won." + " Your point " + oyuncuPuani +  " Computer's point = " + pcPuani);
+            }
+            if (pcPuani == 5){
+                System.out.println("COMPUTER WON WITH 5 POINTS");
+                System.exit(0);
+            }
+            else if (oyuncuPuani == 5){
+                System.out.println("PLAYER WON WITH 5 POINTS");
+                System.exit(0);
+            }
+        }
+        while (pcPuani != 5 | oyuncuPuani != 5);
+    }
+}
